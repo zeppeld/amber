@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
         routes: {
           "Welcome": (context) => Welcome(),
           "Login": (context) => Login(),
-          "AmbulanceList": (context) => List()
+          "AmbulanceList": (context) => AList()
         },
         home: Welcome());
   }
