@@ -1,3 +1,4 @@
+import 'package:amber/services/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class AList extends StatefulWidget {
@@ -6,6 +7,7 @@ class AList extends StatefulWidget {
 }
 
 class _AListState extends State<AList> {
+  final AuthService _auth = AuthService();
   List<int> itemState = [0, 0, 0, 0];
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,14 @@ class _AListState extends State<AList> {
                   fontFamily: "Quicksand",
                   fontSize: 30,
                   decoration: TextDecoration.none,
-                  color: Colors.white))
+                  color: Colors.white)),
+          FlatButton.icon(
+              onPressed: () async {
+                await _auth.signOut();
+              },
+              icon: Icon(Icons.person, color: Colors.white, size: 30),
+              label: Text('logout',
+                  style: TextStyle(color: Colors.white, fontSize: 16)))
         ],
         leading: Icon(Icons.menu),
       ),
