@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:amber/services/auth_service.dart';
 
 class SignUpForm extends StatelessWidget {
   @override
@@ -7,22 +8,6 @@ class SignUpForm extends StatelessWidget {
       color: Colors.grey[800],
       child: Column(
         children: [
-          Container(
-            margin: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(25), color: Colors.white),
-            child: TextField(
-              decoration: new InputDecoration(
-                labelText: "Enter Name",
-                labelStyle: TextStyle(fontSize: 24),
-                fillColor: Colors.white,
-                border: new OutlineInputBorder(
-                  borderRadius: new BorderRadius.circular(25.0),
-                ),
-              ),
-              keyboardType: TextInputType.emailAddress,
-            ),
-          ),
           Container(
             margin: EdgeInsets.all(10),
             decoration: BoxDecoration(
