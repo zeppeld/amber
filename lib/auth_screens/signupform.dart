@@ -1,19 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:amber/services/auth_service.dart';
 
-class SignUpForm extends StatelessWidget {
+class SignUpForm extends StatefulWidget {
+  static final _formkey = new GlobalKey<FormState>();
+
+  @override
+  _SignUpFormState createState() => _SignUpFormState();
+}
+
+class _SignUpFormState extends State<SignUpForm> {
   final AuthService _auth = AuthService();
-  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+
   String _email, _password, error = "";
+
   @override
   Widget build(BuildContext context) {
     return Material(
       color: Colors.grey[800],
       child: Form(
-        key: _formkey,
+        key: SignUpForm._formkey,
         child: Column(
           children: [
             Container(
+              height: 40,
+              width: MediaQuery.of(context).size.width * 0.9,
               margin: EdgeInsets.all(10),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(25), color: Colors.white),
@@ -37,6 +47,8 @@ class SignUpForm extends StatelessWidget {
               ),
             ),
             Container(
+              height: 40,
+              width: MediaQuery.of(context).size.width * 0.9,
               margin: EdgeInsets.all(5),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(25), color: Colors.white),
@@ -69,7 +81,8 @@ class SignUpForm extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15)),
                 child: FlatButton(
                     onPressed: () async {
-                      if (_formkey.currentState.validate()) {
+                      print(_password);
+                      if (SignUpForm._formkey.currentState.validate()) {
                         dynamic result = await _auth
                             .createUserWithEmailAndPassword(_email, _password);
                         Navigator.of(context).pushNamedAndRemoveUntil(
